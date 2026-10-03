@@ -93,7 +93,7 @@
       <h1>DUDU</h1>
       <h2 style="color:var(--pink2)">The Ultimate Boyfriend Test</h2>
       <p class="sub">Mohit, you've been selected for an extremely important mission:</p>
-      <p style="font-size:21px;font-weight:900;color:white">Prove that you are the world's most adorable, food-loving, Bollywood-singing, completely-alcohol-resistant boyfriend.</p>
+      <p style="font-size:21px;font-weight:900;color:white">Prove that you are the world's most adorable, food-loving, Bollywood-singing, gift-sending, food-stealing boyfriend.</p>
       <button class="btn" id="startGame">ACCEPT THE MISSION 💌</button>
       <div class="tiny">Warning: girlfriend opinions may be included.</div>
     </div>
@@ -122,7 +122,7 @@
       Congratulations. You have successfully completed the world's least objective boyfriend test.
       <br><br>
       Your official results are in: <strong>you are still my favourite person.</strong>
-      Even after all the evidence, the food obsession, the Bollywood drama, and the fact that alcohol and you have apparently signed a lifelong separation agreement. 😂
+      Even after all the evidence, the food stealing, the 40-minute ordering crisis, the ridiculously expensive gifts, the Bollywood singing, and the one-minute incident. 😂
       <br><br>
       Thank you for being my person, my comfort, my chaos and one of my favourite reasons to smile.
       <br><br>
@@ -154,74 +154,206 @@
   // All game text is original; no copyrighted song lyrics or recordings are used.
   const rounds = [
     {
-      type:"quiz",
-      icon:"🍕",
-      title:"ROUND 1 — DUDU VS FOOD",
-      text:"A hungry Dudu has exactly one chance. Which food deserves the VIP seat at the table?",
+      type:"quiz", icon:"💗", title:"ROUND 1 — THE NICKNAME TEST",
+      text:"What does your girlfriend call you?",
       choices:[
-        ["🍕 Pizza — because happiness is round.",true],
-        ["🥬 Plain lettuce — heartbreak in vegetable form.",false],
-        ["🧊 Ice cubes — technically crunchy.",false],
-        ["📄 The restaurant menu — ambitious.",false]
+        ["💗 Baaydi",false],
+        ["👑 Meri Raani",false],
+        ["🐻 Bubu",false],
+        ["✨ All of these ❤️",true]
       ],
-      success:"Correct. A man of culture. +20",
-      fail:"Dudu. We need to discuss your relationship with food."
+      success:"CORRECT. You have successfully survived the nickname universe. ❤️",
+      fail:"There are multiple names involved here, Dudu. 😂"
     },
     {
-      type:"quiz",
-      icon:"🥂",
-      title:"ROUND 2 — THE ALCOHOL INCIDENT",
-      text:"Someone offers Dudu a mysterious alcoholic drink. What happens next?",
+      type:"quiz", icon:"🏫", title:"ROUND 2 — BEFORE EVERYTHING",
+      text:"What were you two before becoming… well, YOU TWO?",
       choices:[
-        ["🥂 He says yes and becomes a party legend.",false],
-        ["🏃 He politely escapes at approximately 900 km/h.",true],
-        ["🍷 He suddenly develops a taste for wine.",false],
-        ["😎 He says 'just one' like a movie villain.",false]
+        ["🏫 School best friends ❤️",true],
+        ["🍕 Two strangers bonded over food",false],
+        ["🎬 Bollywood co-stars",false],
+        ["🤨 Professional enemies",false]
       ],
-      success:"CORRECT. 😂 Alcohol: 0. Dudu: 1.",
-      fail:"Incorrect. Have you met Dudu?!"
+      success:"Correct. From school best friends to… this. 🥹❤️",
+      fail:"Dudu has forgotten the lore. 😭"
     },
     {
-      type:"quiz",
-      icon:"🎬",
-      title:"ROUND 3 — BOLLYWOOD MODE",
-      text:"A romantic Bollywood-style moment begins. What is Dudu most likely to do?",
+      type:"quiz", icon:"🧀", title:"ROUND 3 — THE CHEESY BEGINNING",
+      text:"What did you eat when you went out with Adi?",
       choices:[
-        ["🎤 Start emotionally singing along.",true],
-        ["📊 Open a spreadsheet.",false],
-        ["🧹 Organise the cupboard.",false],
-        ["🧘 Pretend he has no feelings.",false]
+        ["🧀 Cheese momos + cheese shev puri ❤️",true],
+        ["🍕 Pizza + pasta",false],
+        ["🥪 Sandwiches + fries",false],
+        ["🍛 An entire thali",false]
       ],
-      success:"Correct. Cue the imaginary violins. 🎻",
-      fail:"Wrong. The background music is disappointed."
+      success:"CORRECT. And then came that absolutely sweetest first hug at Adi's home. 🥹❤️",
+      fail:"How can you forget the cheese?! 😂"
     },
     {
-      type:"food",
-      icon:"🍽️",
-      title:"ROUND 4 — FEED THE DUDU",
-      text:"The food alarm has gone off. Tap FIVE delicious things before time runs out. Wrong answers cost a second!",
+      type:"quiz", icon:"🍽️", title:"ROUND 4 — THE FOOD TRUTH",
+      text:"What food does Dudu absolutely hate?",
+      choices:[
+        ["🥦 Broccoli",false],
+        ["🧀 Cheese",false],
+        ["🌶️ Spicy food",false],
+        ["🍽️ Nothing. He doesn't hate ANY food. ❤️",true]
+      ],
+      success:"CORRECT. Dudu does not discriminate. He eats EVERYTHING. 😂",
+      fail:"Wrong. This man has no food enemies. Only food."
+    },
+    {
+      type:"quiz", icon:"🍴", title:"ROUND 5 — FOOD THIEF",
+      text:"What happens when you two order food together?",
+      choices:[
+        ["🍽️ He takes 40 minutes to decide, so she chooses… then he steals her food and finishes everything. ❤️",true],
+        ["⚡ He decides instantly and never touches hers.",false],
+        ["🥗 They both order salads and share politely.",false],
+        ["🚫 They don't share food.",false]
+      ],
+      success:"CORRECT. 40 minutes of decision-making followed by professional food theft. 😂❤️",
+      fail:"Dudu's food-stealing résumé says otherwise. 😭"
+    },
+    {
+      type:"quiz", icon:"🎶", title:"ROUND 6 — DUDU'S SONG",
+      text:"Which song did Dudu dedicate to his girlfriend?",
+      choices:[
+        ["🎶 Tu Jo Mila — Bajrangi Bhaijaan ❤️",true],
+        ["🎵 Tum Se Hi",false],
+        ["🎵 Pehla Nasha",false],
+        ["🎵 Aaj Ki Party",false]
+      ],
+      success:"Correct. Okay Mr. Bollywood. We remember. 🎤❤️",
+      fail:"The imaginary Bollywood orchestra is disappointed. 😭"
+    },
+    {
+      type:"quiz", icon:"🎁", title:"ROUND 7 — THE GIFT PROBLEM",
+      text:"What happens when she casually says, 'I want this right now'?",
+      choices:[
+        ["🎁 He somehow sends it to her because apparently casual comments are purchase orders. ❤️",true],
+        ["💬 He says, 'Maybe someday.'",false],
+        ["📊 He researches it for three months.",false],
+        ["🙈 He pretends he didn't hear her.",false]
+      ],
+      success:"CORRECT. Ridiculously expensive gifts incoming. Girlfriend: simultaneously precious and CRAZY. 😂❤️",
+      fail:"Have you met Dudu? One sentence = one shopping mission. 😂"
+    },
+    {
+      type:"quiz", icon:"💋", title:"ROUND 8 — THE ONE-MINUTE INCIDENT",
+      text:"Dudu came running to her house after hearing she was home alone. What happened next?",
+      choices:[
+        ["⏱️ They lasted about one minute. 💀❤️",true],
+        ["🕐 They talked for three hours.",false],
+        ["🍿 They watched a whole movie.",false],
+        ["🍝 They cooked dinner together.",false]
+      ],
+      success:"ONE. MINUTE. 😭 The shortest feature film ever produced. ❤️",
+      fail:"The official records say approximately one minute. 😂"
+    },
+    {
+      type:"quiz", icon:"🎤", title:"ROUND 9 — DUDU'S SUPERPOWER",
+      text:"What is Dudu ridiculously good at?",
+      choices:[
+        ["🎤 Singing — he is the BEST BEST singer. ❤️",true],
+        ["🏃 Running away from food",false],
+        ["🧮 Deciding what to order quickly",false],
+        ["🧘 Being completely normal",false]
+      ],
+      success:"Correct. Girlfriend-certified BEST BEST singer. 🎤❤️",
+      fail:"Nope. Someone needs to appreciate this man's vocals. 😂"
+    },
+    {
+      type:"quiz", icon:"😂", title:"ROUND 10 — THE DUDU SOUND",
+      text:"What is one thing Dudu is known for saying?",
+      choices:[
+        ["Hihi ❤️",true],
+        ["Bro",false],
+        ["Okay sir",false],
+        ["Hmm hmm",false]
+      ],
+      success:"HIHI. 😂❤️ You knew exactly what that meant.",
+      fail:"Incorrect. The answer was literally HIHI. 😂"
+    },
+    {
+      type:"quiz", icon:"🫶", title:"ROUND 11 — IMPORTANT DUTY",
+      text:"What must Dudu remember to do?",
+      choices:[
+        ["🫶 Remember to check on Bubu ❤️",true],
+        ["📧 Check his emails",false],
+        ["🌦️ Check the weather",false],
+        ["📱 Check the menu",false]
+      ],
+      success:"REMEMBER TO CHECK ON BUBU. THIS IS NOT OPTIONAL. 😂❤️",
+      fail:"Bubu is filing a formal complaint. 😭"
+    },
+    {
+      type:"quiz", icon:"📞", title:"FINAL ROUND 1 — THE TIMELINE TRAP",
+      text:"Our first longest call was in the year…?",
+      choices:[
+        ["2023",false],
+        ["2019 ❤️",true],
+        ["2026",false],
+        ["2017",false]
+      ],
+      success:"2019. You survived the timeline trap. 📞❤️",
+      fail:"Dudu, think carefully… this is relationship history. 😂"
+    },
+    {
+      type:"quiz", icon:"💋", title:"FINAL ROUND 2 — OUR SECRET",
+      text:"What do we always do when we hang out?",
+      choices:[
+        ["💋 Sneak kisses ❤️",true],
+        ["📸 Take professional couple photos",false],
+        ["📚 Study together",false],
+        ["😇 Actually behave normally",false]
+      ],
+      success:"Correct. Very subtle. Very innocent. Obviously. 😌💋",
+      fail:"The evidence says otherwise. 😂"
+    },
+    {
+      type:"quiz", icon:"🚽", title:"FINAL ROUND 3 — OUR THING",
+      text:"What is basically OUR thing?",
+      choices:[
+        ["🚽 Taking each other everywhere… even when one of us is going to pee. 😂❤️",true],
+        ["👕 Matching outfits",false],
+        ["🍳 Cooking elaborate meals",false],
+        ["🏋️ Going to the gym together",false]
+      ],
+      success:"SOULMATES. BATHROOM TRIPS INCLUDED. 😭❤️",
+      fail:"You forgot the most important relationship rule. 😂"
+    },
+    {
+      type:"quiz", icon:"🍕", title:"FINAL ROUND 4 — THE FOOD DYNAMIC",
+      text:"What is the food dynamic in this relationship?",
+      choices:[
+        ["🍽️ She is picky. He eats EVERYTHING. ❤️",true],
+        ["🥗 Both are extremely picky.",false],
+        ["🍴 He is picky. She eats everything.",false],
+        ["🤷 Neither of them cares about food.",false]
+      ],
+      success:"Exactly. One picky eater + one human food disposal system. 😂❤️",
+      fail:"The food evidence strongly disagrees. 😂"
+    },
+    {
+      type:"quiz", icon:"💞", title:"FINAL ROUND 5 — EVERYTHING",
+      text:"What is Dudu to his girlfriend?",
+      choices:[
+        ["💗 My favourite person",false],
+        ["🫶 My best friend",false],
+        ["😂 My favourite idiot",false],
+        ["❤️ All of the above",true]
+      ],
+      success:"CORRECT. And probably the only answer that was never in doubt. ❤️",
+      fail:"Nice try. The girlfriend's answer is legally final. ❤️"
+    },
+    {
+      type:"food", icon:"🍽️", title:"BONUS ROUND — FEED THE FOOD THIEF",
+      text:"Dudu eats everything. Tap FIVE delicious things before time runs out! Wrong answers cost a second.",
       target:5
     },
     {
-      type:"beat",
-      icon:"🎶",
-      title:"ROUND 5 — ROMANTIC BOLLYWOOD HEARTBEAT",
-      text:"Tap the heart whenever it lights up. Get 8 beats right. We are creating an entirely original dramatic soundtrack for Dudu.",
+      type:"beat", icon:"🎶", title:"BONUS ROUND — DUDU'S HEARTBEAT",
+      text:"Tap the heart whenever it lights up. Get 8 beats right. Consider this the world's most unnecessarily dramatic romantic soundtrack.",
       target:8
-    },
-    {
-      type:"quiz",
-      icon:"💞",
-      title:"FINAL ROUND — GIRLFRIEND KNOWLEDGE",
-      text:"What is Dudu's most important achievement?",
-      choices:[
-        ["🏆 Winning this extremely unbiased test.",false],
-        ["🍕 Becoming one with the food.",false],
-        ["🎬 Surviving every romantic Bollywood moment.",false],
-        ["❤️ Somehow becoming your favourite person.",true]
-      ],
-      success:"That answer was suspiciously correct. ❤️",
-      fail:"Nice try. The girlfriend's answer is legally final."
     }
   ];
 
