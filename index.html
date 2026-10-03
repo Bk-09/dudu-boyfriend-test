@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#160b20">
+<meta name="description" content="DUDU: The Ultimate Boyfriend Test">
+<title>DUDU: The Ultimate Boyfriend Test 💗</title>
+<style>
+  :root{
+    --bg:#100817;
+    --panel:#1b1024;
+    --panel2:#261431;
+    --pink:#ff6fae;
+    --pink2:#ffb4d2;
+    --gold:#ffd166;
+    --mint:#9ff3d2;
+    --text:#fff8fc;
+    --muted:#cdbbd0;
+    --danger:#ff7890;
+    --shadow:0 18px 60px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#32153d 0,#100817 55%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  body{display:flex;justify-content:center}
+  button{font:inherit}
+  .app{width:min(100%,720px);padding:18px 14px 30px}
+  .screen{display:none;animation:rise .35s ease both}
+  .screen.active{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .brand{text-align:center;margin:8px 0 16px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pink2);font-weight:900}
+  h1{font-size:clamp(34px,9vw,62px);line-height:.95;margin:8px 0}
+  h2{font-size:clamp(26px,7vw,40px);margin:8px 0 12px}
+  p{line-height:1.55;color:var(--muted)}
+  .card{background:linear-gradient(145deg,rgba(38,20,49,.96),rgba(25,13,34,.96));border:1px solid rgba(255,180,210,.18);border-radius:28px;padding:24px;box-shadow:var(--shadow)}
+  .hero{min-height:610px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+  .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.5}
+  .hero:before{width:220px;height:220px;background:#ff4f9a;top:-110px;right:-80px}
+  .hero:after{width:180px;height:180px;background:#7d4dff;bottom:-100px;left:-70px}
+  .hero>*{position:relative;z-index:1}
+  .dudu{font-size:74px;filter:drop-shadow(0 8px 18px rgba(255,105,170,.3));animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+  .sub{font-size:18px}
+  .btn{width:100%;min-height:52px;border:0;border-radius:17px;background:linear-gradient(135deg,#ff6fae,#ff438f);color:white;font-weight:900;cursor:pointer;margin-top:12px;box-shadow:0 9px 25px rgba(255,67,143,.22);transition:transform .12s}
+  .btn:active{transform:scale(.98)}
+  .btn.secondary{background:#302039;color:var(--text);box-shadow:none;border:1px solid rgba(255,255,255,.1)}
+  .btn.gold{background:linear-gradient(135deg,#ffd166,#ffad4d);color:#321b05}
+  .tiny{font-size:12px;color:#9e8da2;margin-top:12px}
+  .topbar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}
+  .pill{padding:9px 12px;border-radius:999px;background:#24152d;border:1px solid rgba(255,255,255,.08);font-weight:800;font-size:13px}
+  .progress{height:9px;background:#2a1932;border-radius:99px;overflow:hidden;margin:10px 0 18px}
+  .progress>div{height:100%;background:linear-gradient(90deg,#ff6fae,#ffd166);width:0;transition:width .25s}
+  .challenge{min-height:550px}
+  .icon{font-size:64px;text-align:center;margin:4px 0 10px}
+  .center{text-align:center}
+  .choices{display:grid;gap:10px;margin-top:20px}
+  .choice{border:1px solid rgba(255,255,255,.1);background:#24152d;color:var(--text);border-radius:17px;padding:16px;text-align:left;cursor:pointer;font-weight:750;min-height:54px}
+  .choice.correct{background:rgba(86,211,157,.18);border-color:#72e2b4}
+  .choice.wrong{background:rgba(255,90,120,.15);border-color:#ff7890}
+  .choice:disabled{cursor:default}
+  .feedback{min-height:56px;margin-top:14px;padding:12px 14px;border-radius:15px;background:#19101f;color:var(--pink2);font-weight:800}
+  .foodgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+  .food{background:#24152d;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:20px 10px;color:white;cursor:pointer;font-size:42px;min-height:110px}
+  .food small{display:block;font-size:13px;margin-top:6px;font-weight:800;color:#e6d5e8}
+  .timer{font-size:54px;font-weight:1000;text-align:center;color:var(--gold);margin:4px}
+  .meter{height:14px;background:#291832;border-radius:99px;overflow:hidden}
+  .meter>div{height:100%;background:linear-gradient(90deg,#9ff3d2,#ffd166);width:100%;transform-origin:left}
+  .beatbox{height:210px;border-radius:24px;background:radial-gradient(circle,#3a1c48,#1a0f22);display:grid;place-items:center;margin:18px 0;border:1px solid rgba(255,255,255,.08)}
+  .beat{width:115px;height:115px;border-radius:50%;border:0;background:linear-gradient(145deg,#ff86bb,#ff478f);box-shadow:0 0 0 0 rgba(255,111,174,.5);color:white;font-size:22px;font-weight:1000;cursor:pointer}
+  .beat.pulse{animation:pulse .38s ease}
+  @keyframes pulse{50%{transform:scale(1.13);box-shadow:0 0 0 25px rgba(255,111,174,0)}}
+  .resultScore{font-size:64px;font-weight:1000;color:var(--gold);text-align:center}
+  .letter{background:#fff5fb;color:#3c1830;border-radius:20px;padding:22px;text-align:left;line-height:1.7;box-shadow:inset 0 0 0 1px rgba(90,20,60,.08)}
+  .signature{font-weight:1000;color:#d83278;margin-top:16px}
+  .badge{display:inline-block;margin:5px 3px;padding:7px 10px;border-radius:999px;background:#2b1735;color:#ffd3e5;font-size:12px;font-weight:900}
+  .hidden{display:none!important}
+  @media(max-width:420px){
+    .app{padding:10px 9px 24px}.card{padding:19px;border-radius:23px}.hero{min-height:590px}
+    .challenge{min-height:560px}.foodgrid{gap:9px}.food{padding:15px 8px}
+  }
+  @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+
+<section id="home" class="screen active">
+  <div class="card hero">
+    <div>
+      <div class="eyebrow">A very serious scientific experiment</div>
+      <div class="dudu">💗</div>
+      <h1>DUDU</h1>
+      <h2 style="color:var(--pink2)">The Ultimate Boyfriend Test</h2>
+      <p class="sub">Mohit, you've been selected for an extremely important mission:</p>
+      <p style="font-size:21px;font-weight:900;color:white">Prove that you are the world's most adorable, food-loving, Bollywood-singing, completely-alcohol-resistant boyfriend.</p>
+      <button class="btn" id="startGame">ACCEPT THE MISSION 💌</button>
+      <div class="tiny">Warning: girlfriend opinions may be included.</div>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="screen">
+  <div class="topbar">
+    <div class="pill">DUDU TEST 💗</div>
+    <div class="pill">Score: <span id="score">0</span></div>
+  </div>
+  <div class="progress"><div id="progress"></div></div>
+  <div id="challenge" class="card challenge"></div>
+</section>
+
+<section id="final" class="screen">
+  <div class="card center">
+    <div class="eyebrow">Official results</div>
+    <div style="font-size:65px;margin-top:5px">🏆</div>
+    <h2>Boyfriend Test Complete</h2>
+    <div class="resultScore" id="finalScore">0</div>
+    <div id="badges"></div>
+    <p id="finalVerdict"></p>
+    <div class="letter">
+      <strong>Dear Dudu,</strong><br><br>
+      Congratulations. You have successfully completed the world's least objective boyfriend test.
+      <br><br>
+      Your official results are in: <strong>you are still my favourite person.</strong>
+      Even after all the evidence, the food obsession, the Bollywood drama, and the fact that alcohol and you have apparently signed a lifelong separation agreement. 😂
+      <br><br>
+      Thank you for being my person, my comfort, my chaos and one of my favourite reasons to smile.
+      <br><br>
+      Now please report to your girlfriend's office to collect your real prize. ❤️
+      <div class="signature">— Your girl, who definitely did not rig this test</div>
+    </div>
+    <button class="btn" id="replay">MAKE ME PROVE IT AGAIN 🔥</button>
+    <button class="btn secondary" id="homeBtn">Back to beginning</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = (id) => document.getElementById(id);
+  const screens = {home:$("home"), game:$("game"), final:$("final")};
+  const challenge = $("challenge");
+  const scoreEl = $("score");
+  const progressEl = $("progress");
+  const finalScoreEl = $("finalScore");
+  const badgesEl = $("badges");
+  const verdictEl = $("finalVerdict");
+
+  let state = {score:0, round:0, locked:false, timer:null, beatTimer:null, audio:null};
+
+  // All game text is original; no copyrighted song lyrics or recordings are used.
+  const rounds = [
+    {
+      type:"quiz",
+      icon:"🍕",
+      title:"ROUND 1 — DUDU VS FOOD",
+      text:"A hungry Dudu has exactly one chance. Which food deserves the VIP seat at the table?",
+      choices:[
+        ["🍕 Pizza — because happiness is round.",true],
+        ["🥬 Plain lettuce — heartbreak in vegetable form.",false],
+        ["🧊 Ice cubes — technically crunchy.",false],
+        ["📄 The restaurant menu — ambitious.",false]
+      ],
+      success:"Correct. A man of culture. +20",
+      fail:"Dudu. We need to discuss your relationship with food."
+    },
+    {
+      type:"quiz",
+      icon:"🥂",
+      title:"ROUND 2 — THE ALCOHOL INCIDENT",
+      text:"Someone offers Dudu a mysterious alcoholic drink. What happens next?",
+      choices:[
+        ["🥂 He says yes and becomes a party legend.",false],
+        ["🏃 He politely escapes at approximately 900 km/h.",true],
+        ["🍷 He suddenly develops a taste for wine.",false],
+        ["😎 He says 'just one' like a movie villain.",false]
+      ],
+      success:"CORRECT. 😂 Alcohol: 0. Dudu: 1.",
+      fail:"Incorrect. Have you met Dudu?!"
+    },
+    {
+      type:"quiz",
+      icon:"🎬",
+      title:"ROUND 3 — BOLLYWOOD MODE",
+      text:"A romantic Bollywood-style moment begins. What is Dudu most likely to do?",
+      choices:[
+        ["🎤 Start emotionally singing along.",true],
+        ["📊 Open a spreadsheet.",false],
+        ["🧹 Organise the cupboard.",false],
+        ["🧘 Pretend he has no feelings.",false]
+      ],
+      success:"Correct. Cue the imaginary violins. 🎻",
+      fail:"Wrong. The background music is disappointed."
+    },
+    {
+      type:"food",
+      icon:"🍽️",
+      title:"ROUND 4 — FEED THE DUDU",
+      text:"The food alarm has gone off. Tap FIVE delicious things before time runs out. Wrong answers cost a second!",
+      target:5
+    },
+    {
+      type:"beat",
+      icon:"🎶",
+      title:"ROUND 5 — ROMANTIC BOLLYWOOD HEARTBEAT",
+      text:"Tap the heart whenever it lights up. Get 8 beats right. We are creating an entirely original dramatic soundtrack for Dudu.",
+      target:8
+    },
+    {
+      type:"quiz",
+      icon:"💞",
+      title:"FINAL ROUND — GIRLFRIEND KNOWLEDGE",
+      text:"What is Dudu's most important achievement?",
+      choices:[
+        ["🏆 Winning this extremely unbiased test.",false],
+        ["🍕 Becoming one with the food.",false],
+        ["🎬 Surviving every romantic Bollywood moment.",false],
+        ["❤️ Somehow becoming your favourite person.",true]
+      ],
+      success:"That answer was suspiciously correct. ❤️",
+      fail:"Nice try. The girlfriend's answer is legally final."
+    }
+  ];
+
+  function show(name){
+    Object.values(screens).forEach(s=>s.classList.remove("active"));
+    screens[name].classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function addScore(n){
+    state.score = Math.max(0,state.score+n);
+    scoreEl.textContent=state.score;
+  }
+
+  function updateProgress(){
+    progressEl.style.width = Math.min(100,(state.round/rounds.length)*100)+"%";
+  }
+
+  function start(){
+    stopTimers();
+    state={score:0,round:0,locked:false,timer:null,beatTimer:null,audio:null};
+    scoreEl.textContent="0";
+    show("game");
+    renderRound();
+  }
+
+  function next(){
+    stopTimers();
+    state.round++;
+    state.locked=false;
+    updateProgress();
+    if(state.round>=rounds.length) finish();
+    else renderRound();
+  }
+
+  function renderRound(){
+    const r=rounds[state.round];
+    updateProgress();
+    if(r.type==="quiz") renderQuiz(r);
+    if(r.type==="food") renderFood(r);
+    if(r.type==="beat") renderBeat(r);
+  }
+
+  function renderQuiz(r){
+    challenge.innerHTML=`
+      <div class="icon">${r.icon}</div>
+      <div class="eyebrow">${r.title}</div>
+      <h2>${r.text}</h2>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback">Choose wisely, Dudu. Your girlfriend is watching. 👀</div>
+      <button class="btn hidden" id="nextBtn" type="button">NEXT ROUND →</button>
+    `;
+    const box=$("choices"), feedback=$("feedback"), nextBtn=$("nextBtn");
+    r.choices.forEach(([text,correct])=>{
+      const b=document.createElement("button");
+      b.type="button"; b.className="choice"; b.textContent=text;
+      b.addEventListener("click",()=>{
+        if(state.locked)return;
+        state.locked=true;
+        box.querySelectorAll("button").forEach(x=>x.disabled=true);
+        if(correct){
+          b.classList.add("correct"); addScore(20); feedback.textContent=r.success;
+        }else{
+          b.classList.add("wrong"); addScore(5); feedback.textContent=r.fail+" +5 consolation points.";
+          const correctBtn=[...box.children][r.choices.findIndex(x=>x[1])];
+          correctBtn.classList.add("correct");
+        }
+        nextBtn.classList.remove("hidden");
+      });
+      box.appendChild(b);
+    });
+    nextBtn.addEventListener("click",next);
+  }
+
+  function renderFood(r){
+    challenge.innerHTML=`
+      <div class="icon">${r.icon}</div>
+      <div class="eyebrow">${r.title}</div>
+      <h2>${r.text}</h2>
+      <div class="timer" id="timer">8</div>
+      <div class="meter"><div id="timebar"></div></div>
+      <div class="foodgrid" id="foodgrid"></div>
+      <div class="feedback" id="feedback">5 correct dishes = bonus points. Don't feed Dudu lettuce.</div>
+    `;
+    const foods=[
+      ["🍕","Pizza",true],["🍟","Fries",true],["🍔","Burger",true],["🍩","Donut",true],
+      ["🥦","Broccoli",false],["🧼","Soap",false],["📚","Books",false],["🪨","Rock",false]
+    ];
+    const grid=$("foodgrid"), feedback=$("feedback");
+    let got=0,time=8;
+    foods.sort(()=>Math.random()-.5).forEach(([emoji,name,good])=>{
+      const b=document.createElement("button");
+      b.type="button";b.className="food";b.innerHTML=emoji+"<small>"+name+"</small>";
+      b.addEventListener("click",()=>{
+        if(state.locked)return;
+        if(good){
+          got++;addScore(7);b.disabled=true;b.style.opacity=".4";
+          feedback.textContent=got<r.target?`YES. Dudu has been fed ${got}/${r.target}. 🍽️`:"DUDU IS FED. +BONUS";
+          if(got>=r.target){
+            state.locked=true; addScore(25); clearInterval(state.timer);
+            feedback.textContent="Perfect. Food has been successfully delivered to Dudu. +25 bonus";
+            setTimeout(next,900);
+          }
+        }else{
+          time=Math.max(1,time-1); addScore(-3); b.disabled=true;b.style.opacity=".45";
+          feedback.textContent="That is NOT food for Dudu. 😂 -3";
+        }
+      });
+      grid.appendChild(b);
+    });
+    state.timer=setInterval(()=>{
+      time-=1;
+      $("timer").textContent=time;
+      $("timebar").style.width=(time/8*100)+"%";
+      if(time<=0){
+        clearInterval(state.timer);
+        if(!state.locked){state.locked=true;feedback.textContent=`Time! Dudu received ${got}/${r.target} dishes. We shall pretend that was intentional. 😂`;setTimeout(next,1200)}
+      }
+    },1000);
+  }
+
+  function renderBeat(r){
+    challenge.innerHTML=`
+      <div class="icon">${r.icon}</div>
+      <div class="eyebrow">${r.title}</div>
+      <h2>${r.text}</h2>
+      <div class="beatbox"><button class="beat" id="beat" type="button">TAP<br>ME 💗</button></div>
+      <div class="center"><strong id="beatCount">0 / ${r.target}</strong></div>
+      <div class="feedback" id="feedback">The heart will light up. Tap it when it does.</div>
+    `;
+    const btn=$("beat"),count=$("beatCount"),feedback=$("feedback");
+    let hits=0,active=false,deadline=null;
+    let audioCtx=null;
+    try{audioCtx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){audioCtx=null}
+    function tone(freq=520){
+      if(!audioCtx)return;
+      try{
+        const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+        o.frequency.value=freq;o.type="sine";g.gain.setValueAtTime(.035,audioCtx.currentTime);
+        g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.18);
+        o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.18);
+      }catch(e){}
+    }
+    function pulse(){
+      if(state.locked)return;
+      active=true;btn.classList.add("pulse");btn.textContent="NOW! 💗";tone(660);
+      deadline=Date.now()+900;
+      state.beatTimer=setTimeout(()=>{active=false;btn.classList.remove("pulse");btn.textContent="WAIT…";feedback.textContent="Missed the beat! 😭 The Bollywood director is judging you.";schedule()},900);
+    }
+    function schedule(){
+      if(state.locked)return;
+      state.beatTimer=setTimeout(pulse,700+Math.random()*1100);
+    }
+    btn.addEventListener("click",()=>{
+      if(state.locked)return;
+      if(active && Date.now()<=deadline){
+        hits++;addScore(8);tone(880);active=false;btn.classList.remove("pulse");btn.textContent="NICE 💗";
+        count.textContent=`${hits} / ${r.target}`;feedback.textContent=hits<r.target?"That was smooth. Keep going. 😌":"HEARTBEAT MASTER. +30 BONUS";
+        if(hits>=r.target){state.locked=true;clearTimeout(state.beatTimer);addScore(30);setTimeout(next,1000)}
+        else schedule();
+      }else if(!active){
+        addScore(-2);feedback.textContent="Too early! Patience, Dudu. 😂";tone(260);
+      }
+    });
+    schedule();
+  }
+
+  function finish(){
+    stopTimers();
+    const s=state.score;
+    finalScoreEl.textContent=s;
+    let badges=[];
+    if(s>=90)badges.push("💗 Certified Dudu");
+    if(s>=110)badges.push("🍕 Food Champion");
+    if(s>=130)badges.push("🎬 Bollywood Heartthrob");
+    if(s>=145)badges.push("🥂 Alcohol? Never Heard Of Her");
+    if(s<90)badges.push("😂 Chaotic Boyfriend");
+    badgesEl.innerHTML=badges.map(x=>`<span class="badge">${x}</span>`).join("");
+    verdictEl.textContent =
+      s>=145 ? "Official verdict: PERFECT SCORE. The girlfriend has no choice but to keep you. ❤️" :
+      s>=120 ? "Official verdict: Extremely boyfriend-shaped. You have earned premium cuddles. 💗" :
+      s>=90 ? "Official verdict: Acceptable levels of boyfriend excellence. A rematch is recommended. 😌" :
+      "Official verdict: The test was difficult. The girlfriend has decided to overlook the evidence. 😂❤️";
+    show("final");
+  }
+
+  function stopTimers(){
+    if(state.timer)clearInterval(state.timer);
+    if(state.beatTimer)clearTimeout(state.beatTimer);
+    state.timer=null;state.beatTimer=null;
+  }
+
+  $("startGame").addEventListener("click",start);
+  $("replay").addEventListener("click",start);
+  $("homeBtn").addEventListener("click",()=>{stopTimers();show("home")});
+})();
+</script>
+</body>
+</html>
